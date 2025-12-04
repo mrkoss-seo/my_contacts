@@ -8,9 +8,7 @@
 
 <style>
 
-/* ----------------------- */
-/*     БАЗОВІ СТИЛІ        */
-/* ----------------------- */
+/* базові стилі */
 
 body {
     margin: 0;
@@ -20,7 +18,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 30px 15px;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background .3s, color .3s;
 }
 
 .avatar {
@@ -28,31 +26,13 @@ body {
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    margin-top: 10px;
     border: 3px solid;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    transition: border-color 0.3s ease;
+    margin-top: 10px;
 }
 
-h1 {
-    margin: 20px 0 10px;
-    font-size: 28px;
-    font-weight: 600;
-}
-
-p.subtitle {
-    margin: 0 0 20px;
-    font-style: italic;
-    line-height: 1.45;
-    text-align: center;
-    max-width: 420px;
-}
-
-/* Кнопка */
 .btn {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     gap: 12px;
     width: 95%;
     max-width: 420px;
@@ -62,20 +42,21 @@ p.subtitle {
     text-decoration: none;
     font-size: 18px;
     border: 1px solid;
-    transition: 0.2s ease;
 }
 
-.btn:hover {
-    transform: translateY(-1px);
-}
-
-/* SVG іконка */
+/* 🔥 ОСНОВНЕ ВИПРАВЛЕННЯ SVG */
 .icon {
     width: 22px;
     height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon svg {
+    width: 100%;   /* ← масштабується, не обрізається */
+    height: 100%;  /* ← масштабується, не обрізається */
 }
 
 .icon * {
@@ -83,65 +64,20 @@ p.subtitle {
     stroke: currentColor !important;
 }
 
-.icon svg {
-    width: 22px;
-    height: 22px;
-}
-
-
-/* ----------------------- */
-/*         DARK MODE       */
-/* ----------------------- */
-
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
-    body {
-        background: #0e0e0f;
-        color: #fff;
-    }
-
-    .avatar {
-        border-color: #333;
-        box-shadow: 0 0 12px rgba(255,255,255,0.12);
-    }
-
-    .btn {
-        background: #1b1b1d;
-        color: #fff;        /* ← робить і текст, і SVG білими */
-        border-color: #2a2a2d;
-    }
-
-    .btn:hover {
-        background: #262628;
-        border-color: #444;
-    }
+    body { background:#0e0e0f; color:#fff; }
+    .btn { background:#1b1b1d; color:#fff; border-color:#2a2a2d; }
+    .btn:hover { background:#262628; }
+    .avatar { border-color:#333; }
 }
 
-
-/* ----------------------- */
-/*        LIGHT MODE       */
-/* ----------------------- */
-
+/* Light mode */
 @media (prefers-color-scheme: light) {
-    body {
-        background: #f5f5f7;
-        color: #222;
-    }
-
-    .avatar {
-        border-color: #ddd;
-        box-shadow: 0 0 12px rgba(0,0,0,0.08);
-    }
-
-    .btn {
-        background: #fff;
-        color: #222;        /* ← SVG стає темним */
-        border-color: #ddd;
-    }
-
-    .btn:hover {
-        background: #f0f0f0;
-        border-color: #ccc;
-    }
+    body { background:#f5f5f7; color:#222; }
+    .btn { background:#fff; color:#222; border-color:#ddd; }
+    .btn:hover { background:#f0f0f0; }
+    .avatar { border-color:#ddd; }
 }
 
 </style>
@@ -151,7 +87,7 @@ p.subtitle {
 
 <img src="photo.jpeg" class="avatar" alt="Avatar">
 
-<h1>Заголовок</h1>
+<h1>Заголовок1</h1>
 
 <p class="subtitle">
     head of digital marketing в tabletki.ua,<br>
