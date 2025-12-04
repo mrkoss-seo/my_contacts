@@ -6,19 +6,20 @@
 <title>Максим Місіченко — Контакти</title>
 
 <style>
-/* ========= BASE STYLES ========= */
+
+/* ----------------------- */
+/* БАЗОВІ СТИЛІ        */
+/* ----------------------- */
 
 body {
     margin: 0;
     padding: 0;
-    background: #f2f2f4;
-    color: #000;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 30px 15px;
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .avatar {
@@ -27,70 +28,73 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-top: 10px;
-    border: 3px solid #ccc;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+    border: 3px solid;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    transition: border-color 0.3s ease;
 }
 
 h1 {
     margin: 20px 0 10px;
     font-size: 28px;
     font-weight: 600;
-    text-align: center;
 }
 
 p.subtitle {
     margin: 0 0 20px;
     font-style: italic;
-    color: #444;
     line-height: 1.45;
     text-align: center;
     max-width: 420px;
 }
 
-/* ========= BUTTONS ========= */
-
+/* Кнопка */
 .btn {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 12px;
     width: 95%;
     max-width: 420px;
-    background: #ffffff;
-    color: #000;
     padding: 14px 18px;
     margin: 10px 0;
     border-radius: 12px;
     text-decoration: none;
     font-size: 18px;
-    border: 1px solid #d5d5d7;
+    border: 1px solid;
+    box-sizing: border-box; /* Важливо для коректних відступів */
     transition: 0.2s ease;
 }
 
 .btn:hover {
-    background: #ededed;
+    transform: translateY(-1px);
 }
 
-/* ========= ICON WRAPPER ========= */
-
+/* Контейнер іконки */
 .icon {
     width: 24px;
     height: 24px;
+    min-width: 24px; /* Щоб не стискало на малих екранах */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* ========= FORCE ALL SVG ICONS TO BE MONOCHROME ========= */
-/* НЕ торкаємо SVG-код — лише стилями робимо все ч/б */
-
+/* SVG налаштування */
 .icon svg {
-    width: 22px;
-    height: 22px;
+    width: 100%;
+    height: 100%;
     display: block;
-    filter: brightness(0) saturate(0); /* робимо іконку чорнобілою */
 }
 
-/* ========= DARK MODE ========= */
+/* Це магія кольору: іконка бере колір тексту кнопки */
+.icon svg path {
+    fill: currentColor;
+}
+
+
+/* ----------------------- */
+/* DARK MODE       */
+/* ----------------------- */
 
 @media (prefers-color-scheme: dark) {
     body {
@@ -98,30 +102,51 @@ p.subtitle {
         color: #fff;
     }
 
-    p.subtitle {
-        color: #ccc;
+    .avatar {
+        border-color: #333;
+        box-shadow: 0 0 12px rgba(255,255,255,0.12);
     }
 
     .btn {
         background: #1b1b1d;
-        color: #fff;
+        color: #fff;        
         border-color: #2a2a2d;
     }
 
     .btn:hover {
         background: #262628;
+        border-color: #444;
     }
+}
 
-    /* інверсія чорнобілих SVG → стають білими */
-    .icon svg {
-        filter: brightness(0) invert(1);
+
+/* ----------------------- */
+/* LIGHT MODE       */
+/* ----------------------- */
+
+@media (prefers-color-scheme: light) {
+    body {
+        background: #f5f5f7;
+        color: #222;
     }
 
     .avatar {
-        border-color: #333;
-        box-shadow: 0 0 12px rgba(255, 255, 255, 0.12);
+        border-color: #ddd;
+        box-shadow: 0 0 12px rgba(0,0,0,0.08);
+    }
+
+    .btn {
+        background: #fff;
+        color: #222;
+        border-color: #ddd;
+    }
+
+    .btn:hover {
+        background: #f0f0f0;
+        border-color: #ccc;
     }
 }
+
 </style>
 
 </head>
@@ -129,7 +154,7 @@ p.subtitle {
 
 <img src="photo.jpeg" class="avatar" alt="Avatar">
 
-<h1>Максим Місіченко</h1>
+<h1>Заголовок</h1>
 
 <p class="subtitle">
     head of digital marketing в tabletki.ua,<br>
@@ -137,56 +162,57 @@ p.subtitle {
     10 років в performance маркетингу.
 </p>
 
-<!-- Телефон -->
 <a class="btn" href="tel:+380730241758">
     <div class="icon">
-        <!-- SVG НЕ ЧІПАЮ -->
-        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g><g><path d="M180.428,304.197c36.332,36.332,80.711,64.548,132.199,85.521c35.751,14.563,65.944-0.643,78.29-37.357c2.216-6.591,2.37-13.043-0.014-19.522c-5.76-15.657-60.331-55.305-76.661-56.194c-12.523-0.681-19.306,7.829-25.037,16.275c-10.838,15.953-24.576,16.042-39.899,9.224c-15.419-6.862-28.91-15.662-40.037-26.79c-11.127-11.127-19.928-24.618-26.79-40.037c-6.818-15.323-6.729-29.061,9.225-39.898c8.446-5.731,16.955-12.514,16.274-25.037c-0.889-16.329-40.537-70.901-56.194-76.66c-6.479-2.384-12.931-2.229-19.522-0.014c-36.714,12.346-51.92,42.54-37.357,78.29C115.88,223.486,144.096,267.865,180.428,304.197z"></path></g></g></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.27.35-.66.24-1.01-.37-1.11-.56-2.3-.56-3.53 0-.55-.45-1-1-1H4.39c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>
+        </svg>
     </div>
     <span>073 024 17 58</span>
 </a>
 
-<!-- Telegram -->
 <a class="btn" href="https://t.me/misichenko_m" target="_blank">
     <div class="icon">
-        <!-- SVG НЕ ЧІПАЮ -->
-        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"><g><g><path d="M152.531,179.476c-1.48,0-2.95-0.438-4.211-1.293l-47.641-32.316l-25.552,18.386c-2.004,1.441-4.587,1.804-6.914,0.972c-2.324-0.834-4.089-2.759-4.719-5.146l-12.83-48.622L4.821,93.928c-2.886-1.104-4.8-3.865-4.821-6.955c-0.021-3.09,1.855-5.877,4.727-7.02l174.312-69.36c0.791-0.336,1.628-0.53,2.472-0.582c0.302-0.018,0.605-0.018,0.906-0.001c1.748,0.104,3.465,0.816,4.805,2.13c1.11,1.268,1.72,2.814,1.835,4.389c0.028,0.396,0.026,0.797-0.009,1.198c-0.024,0.286-0.065,0.571-0.123,0.854L159.898,173.38c-0.473,2.48-2.161,4.556-4.493,5.523C154.48,179.287,153.503,179.476,152.531,179.476z"></path></g></g></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.44-.4-1.38-.85.03-.24.37-.49 1.02-.75 4.02-1.75 6.7-2.9 8.04-3.46 3.82-1.59 4.62-1.87 5.13-1.87.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.21-.03.36z"/>
+        </svg>
     </div>
     <span>Telegram</span>
 </a>
 
-<!-- LinkedIn -->
 <a class="btn" href="https://www.linkedin.com/in/maksim-misichenko-26a445198/" target="_blank">
     <div class="icon">
-        <!-- SVG НЕ ЧІПАЮ -->
-        <svg height="200px" width="200px" fill="#000000" viewBox="0 0 382 382"><path style="fill:#0077B7;" d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889"></path></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+        </svg>
     </div>
     <span>LinkedIn</span>
 </a>
 
-<!-- Instagram -->
 <a class="btn" href="https://www.instagram.com/misichenko_maks" target="_blank">
     <div class="icon">
-        <!-- SVG НЕ ЧІПАЮ -->
-        <svg height="200px" width="200px" viewBox="0 0 551 551"><path d="M386.878,0H164.156C73.64,0,0,73.64,0,164.156v222.722c0,90.516,73.64,164.156,164.156,164.156h222.722"></path></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+        </svg>
     </div>
     <span>Instagram</span>
 </a>
 
-<!-- Facebook -->
 <a class="btn" href="https://www.facebook.com/profile.php?id=100001053792088" target="_blank">
     <div class="icon">
-        <!-- SVG НЕ ЧІПАЮ -->
-        <svg height="200px" width="200px" viewBox="0 0 408 408"><path style="fill:#475993;" d="M353.701,0H55.087C24.665,0,0.002,24.662,0.002,55.085v298.616"></path></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
+        </svg>
     </div>
     <span>Facebook</span>
 </a>
 
-<!-- vCard -->
 <a class="btn" href="maksym.vcf" download>
     <div class="icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a3 3 0 110 6 3 3 0 010-6zm7 12H5v-.5c0-2 4-3.1 6.5-3.1S18 15.5 18 17.5V18z"/></svg>
-    </div>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+        </svg>
+        </div>
     <span>Додати в контакти</span>
 </a>
 
